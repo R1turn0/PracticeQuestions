@@ -3,6 +3,7 @@
 struct ListNode {
     int val;
     ListNode *next;
+
     ListNode(int x) : val(x), next(nullptr) {}
 };
 
@@ -11,7 +12,7 @@ public:
     ListNode *tmp = nullptr;  // 用于记录反转区间后的第一个节点
 
     // 反转从第 m 到第 n 个节点之间的部分链表
-    ListNode *reverseBetween(ListNode* pHead, int m, int n) {
+    ListNode *reverseBetween(ListNode *pHead, int m, int n) {
         if (m == 1) {
             // 当 m == 1 时，直接从头部开始反转前 n 个节点
             return reverse(pHead, n);
@@ -39,7 +40,7 @@ public:
 
 int main() {
     // 创建链表 1 -> 2 -> 3 -> 4 -> 5 -> NULL
-    ListNode* head = new ListNode(1);
+    ListNode *head = new ListNode(1);
     head->next = new ListNode(2);
     head->next->next = new ListNode(3);
     head->next->next->next = new ListNode(4);
@@ -50,7 +51,7 @@ int main() {
     head = solution.reverseBetween(head, 2, 4);
 
     // 打印结果
-    ListNode* current = head;
+    ListNode *current = head;
     while (current != nullptr) {
         std::cout << current->val << " -> ";
         current = current->next;
@@ -59,7 +60,7 @@ int main() {
 
     // 清理内存
     while (head != nullptr) {
-        ListNode* temp = head;
+        ListNode *temp = head;
         head = head->next;
         delete temp;
     }
